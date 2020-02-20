@@ -1,1 +1,54 @@
-(function(){function a(a){const[b,c,d]=a.payload;switch(b){case"App\\Game\\Events\\GameStarted":let{type:a,hash:c}=d;console.log(`Game Started: type: ${a}, hash: ${c}`),"single_choice_hunt"==a?g(c):"duck_hunt"==a&&f(c);break;case"App\\Events\\TransactionCreated":let{transaction:{type:e}}=d;console.log(`Transction Created: ${transaction}`),("faucet"==e||"bonus_duck_hunt"==e)&&h(transaction);break;default:}}const b=function(a){const b=parseInt(1e3*a);return new Promise(a=>setTimeout(a,b))},c=function(a,b){return parseFloat(Math.random()*(b-a)+a).toFixed(10)},d=function(a){a.click()},e=function(a){return document.getElementById(a)},f=async function(){let a=e("duck-hunt-animation");await b(c(1,2)),d(a)},g=async function(){let a=e("single-choice-bonus-animation").children[0];await b(c(0,2)),d(a)},h=async function(a){let c=e("game-submit-button"),{amount:f,new_balance:g}=a;f===g?(await b(1),d(c)):console.log("your balance is bigger then bonus received")},{echo:{connector:{socket:{connection:i}}}}=webpackJsonp([],[],["yMDD"]);i.onmessage=function(b){let c=JSON.parse(b.data);a(c)}})(this);
+!(function() {
+	const n = function(n) {
+			const t = parseInt(1000 * n);
+			return new Promise((n) => setTimeout(n, t));
+		},
+		t = function(n, t) {
+			return parseFloat(Math.random() * (t - n) + n).toFixed(10);
+		},
+		e = function(n) {
+			n.click();
+		},
+		o = function(n) {
+			return document.getElementById(n);
+		},
+		a = async function(a) {
+			let c = o('duck-hunt-animation');
+			await n(t(1, 2)), e(c);
+		},
+		c = async function(a) {
+			let c = o('single-choice-bonus-animation').children[0];
+			await n(t(0, 2)), e(c);
+		},
+		i = async function(t) {
+			let a = o('game-submit-button'),
+				{ amount: c, new_balance: i } = t;
+			c === i
+				? (await n(1), e(a))
+				: console.log('your balance is bigger then bonus received');
+		},
+		{
+			echo: {
+				connector: {
+					socket: { connection: s }
+				}
+			}
+		} = webpackJsonp([], [], ['yMDD']);
+	s.onmessage = function(n) {
+		!(function(n) {
+			const t = n.payload;
+			switch (t[0]) {
+				case 'App\\Game\\Events\\GameStarted':
+					let { type: n, hash: e } = t[2];
+					console.log(`Game Started: type: ${n}, hash: ${e}`),
+						'single_choice_hunt' == n ? c(e) : 'duck_hunt' == n && a(e);
+					break;
+				case 'App\\Events\\TransactionCreated':
+					let { transaction: o } = t[2],
+						{ type: s } = o;
+					console.log(`Transction Created: ${JSON.stringify(o)}`),
+						('faucet' != s && 'bonus_duck_hunt' != s) || i(o);
+			}
+		})(JSON.parse(n.data));
+	};
+})();
