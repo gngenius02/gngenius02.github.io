@@ -4,8 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Tic Tac Toe</title>
-  
-  <link rel="stylesheet" href="style.css">
 <style>td {
   border:  2px solid #333;
   height:  100px;
@@ -76,6 +74,10 @@ table tr td:last-child {
   font-family: "Comic Sans MS", cursive, sans-serif;
   font-size:  50px;
   width: 70px;
+  margin: auto;
+  padding: auto;
+  
+
 }
 
 .selectSym  button:first-of-type {
@@ -84,6 +86,7 @@ table tr td:last-child {
 .selectSym  button:last-of-type {
   margin-left: 10px;
 }
+
 
 </style>
 </head>
@@ -116,7 +119,7 @@ table tr td:last-child {
       <button onClick="selectSym('X')">X</button>
       <button onClick="selectSym('O')">O</button>
     </div>
-<button onClick="startGame()">Replay</button>
+<button onClick="startGame()">Reset</button>
 
   <script>let origBoard;
     let huPlayer ='O';
