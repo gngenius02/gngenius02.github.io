@@ -12,7 +12,7 @@
 					e.ctrlKey == true &&
 					(e.which == '86' || e.which == '67' || e.which == '88')
 				) {
-					alert('cut. copy. paste. not allowed!');
+// 					alert('cut. copy. paste. not allowed!');
 					e.preventDefault();
 				}
 				if (
@@ -21,14 +21,14 @@
 						e.which == '73') ||
 					e.which == '123'
 				) {
-					alert('DEV TOOLS HAS BEEN DISABLED BY THE ADMINISTRATOR.');
+// 					alert('DEV TOOLS HAS BEEN DISABLED BY THE ADMINISTRATOR.');
 					e.preventDefault();
 				}
 			});
 
 			document.addEventListener('mousedown', function (e) {
 				if (e.button == 2) {
-					alert('right-click is disabled!');
+// 					alert('right-click is disabled!');
 					e.preventDefault();
 				}
 			});
