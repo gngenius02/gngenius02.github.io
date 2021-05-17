@@ -35,15 +35,24 @@
 		</script>
 	</head>
 	<body>
-		<button name="clicker" onclick="sound.play()">PLAY</button>
+		<button name="clicker" onclick="play()">PLAY</button>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.1/howler.min.js"></script>
 		<script>
+			var playing = false;
+			function play() {
+				if (playing) {
+					playing = false;
+					return sound.pause();
+				}
+				sound.play();
+			}
 			var sound = new Howl({
 				src: [
 					'https://nationalcraneacademy.com/academy/uploads/lesson_files/audios/T1/T1-Q1.mp3',
 				],
 				volume: 0.5,
 				onend: function () {
+					playing = false;
 					alert('Finished!');
 				},
 			});
