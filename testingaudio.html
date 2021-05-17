@@ -25,9 +25,7 @@
 					return false;
 				}
 			});
-			document.addEventListener('oncontextmenu', function(e){
-				return false;
-			})
+			document.oncontextmenu = function(e){ return false };
 			document.addEventListener('mousedown', function (e) {
 				if (e.button == 2) {
 					e.preventDefault();
