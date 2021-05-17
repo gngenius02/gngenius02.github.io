@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script>
+			document.addEventListener('keydown', function (e) {
+				console.log(e.keyCode);
+				if (
+					e.ctrlKey == true &&
+					(e.which == '86' || e.which == '67' || e.which == '88')
+				) {
+					alert('cut. copy. paste. not allowed!');
+					e.preventDefault();
+				}
+				if (
+					(e.ctrlKey == true &&
+						e.shiftKey == true &&
+						e.which == '73') ||
+					e.which == '123'
+				) {
+					alert('DEV TOOLS HAS BEEN DISABLED BY THE ADMINISTRATOR.');
+					e.preventDefault();
+				}
+			});
+
+			document.addEventListener('mousedown', function (e) {
+				if (e.button == 2) {
+					alert('right-click is disabled!');
+					e.preventDefault();
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<button name="clicker" onclick="sound.play()">PLAY</button>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.1/howler.min.js"></script>
+		<script>
+			var sound = new Howl({
+				src: [
+					'https://nationalcraneacademy.com/academy/uploads/lesson_files/audios/T1/T1-Q1.mp3',
+				],
+				volume: 0.5,
+				onend: function () {
+					alert('Finished!');
+				},
+			});
+		</script>
+	</body>
+</html>
