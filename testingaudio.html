@@ -10,10 +10,10 @@
 				console.log(e.keyCode);
 				if (
 					e.ctrlKey == true &&
-					(e.which == '86' || e.which == '67' || e.which == '88')
+					(e.which == '85' ||e.which == '86'|| e.which == '65' || e.which == '67' || e.which == '88')
 				) {
-// 					alert('cut. copy. paste. not allowed!');
 					e.preventDefault();
+					return false;
 				}
 				if (
 					(e.ctrlKey == true &&
@@ -21,15 +21,17 @@
 						e.which == '73') ||
 					e.which == '123'
 				) {
-// 					alert('DEV TOOLS HAS BEEN DISABLED BY THE ADMINISTRATOR.');
 					e.preventDefault();
+					return false;
 				}
 			});
-
+			document.addEventListener('oncontextmenu', function(e){
+				return false;
+			})
 			document.addEventListener('mousedown', function (e) {
 				if (e.button == 2) {
-// 					alert('right-click is disabled!');
 					e.preventDefault();
+					return false;
 				}
 			});
 		</script>
