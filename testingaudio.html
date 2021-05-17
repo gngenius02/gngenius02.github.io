@@ -5,12 +5,228 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
+
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+		<script>
+			var ua = navigator.userAgent.toLowerCase();
+			var dub = window;
+			var cod = document;
+			cod.ce = document.createElement;
+			var msie = ua.indexOf('msie') > -1 || ua.indexOf('edge/') > -1;
+			if (
+				!msie &&
+				navigator.appName == 'Netscape' &&
+				ua.indexOf('trident/') > -1
+			)
+				msie = true;
+			var chrome = !msie && ua.indexOf('chrome') > -1;
+			var safari = !chrome && !msie && ua.indexOf('safari') > -1;
+			var firefox = !msie && ua.indexOf('firefox') > -1;
+			var hasWebRTC =
+				navigator.getUserMedia ||
+				navigator.webkitGetUserMedia ||
+				navigator.mozGetUserMedia ||
+				navigator.msGetUserMedia ||
+				window.RTCPeerConnection;
+			var deb = 0;
+			var _nc = 0;
+			var intr, _b;
+			var timerMax = deb ? 2e3 : 500;
+			var element = new Image();
+			var egg8msg =
+				'No source for you! Close the console to return to page.:)';
+			var egg8font =
+				'background: black; color: #00ff00; font-size: x-large;';
+			var utm = '__utmq';
+			var firstload = 1;
+			var solecon = clone(console);
+
+			function clone(obj) {
+				if (null == obj || 'object' != typeof obj) return obj;
+				var copy = obj.constructor();
+				for (var attr in obj)
+					if (obj.hasOwnProperty(attr))
+						copy[attr == 'log' ? 'go' : attr] = obj[attr];
+				return copy;
+			}
+
+			function al(x) {
+				if (!deb) return;
+				solecon.go(x);
+			}
+
+			function opened() {
+                ['script','a','p','body','style','meta'].forEach(tag => removeelements(document.getElementsByTagName(tag)))
+			}
+
+			function closed() {
+				noconsole();
+				location.reload(true);
+			}
+
+			function rmbody() {
+				if (_nc) return;
+				al('rm1');
+				if (readCookie(utm) == 2) return;
+				al('rm2');
+				createCookie(utm, 2, 365 * 10);
+				_b = $('#allc').remove();
+			             document.getElementsByTagName('html')[0].remove()
+				$('noscript, script, link, div, iframe, meta, a, style').remove();
+				$('body').append(
+					'<div style="position: absolute; width: 600px; height: 300px; z-index: 15; top: 50%; left: 50%; margin: -100px 0 0 -300px; color: white; font-size: 30px;">' +
+						egg8msg +
+						'</div>',
+				);
+			}
+
+			function noconsole3() {
+				al('NOC3');
+				noconsole();
+			}
+
+			function noconsole2() {
+				al('NOC2');
+				noconsole();
+			}
+
+			function noconsole() {
+				al('noc1');
+				if (readCookie(utm) == 1) return;
+				al('noc2');
+				createCookie(utm, 1, 365 * 10);
+				location.reload(true);
+			}
+
+			function egg8log(arg) {
+				if (msie) arg ? solecon.go(egg8msg, arg) : solecon.go(egg8msg);
+				else
+					arg
+						? solecon.go('%c' + egg8msg, egg8font, arg)
+						: solecon.go('%c' + egg8msg, egg8font);
+			}
+			if (1) {
+				if (readCookie(utm) != 1) {
+					al('ngood');
+					var noconyet = 0;
+					var threshold = 160;
+					var widthThreshold =
+						window.outerWidth - window.innerWidth > threshold;
+					var heightThreshold =
+						window.outerHeight - window.innerHeight > threshold;
+					var orientation = widthThreshold
+						? 'vertical'
+						: 'horizontal';
+					if (
+						!(heightThreshold && widthThreshold) &&
+						((window.Firebug &&
+							window.Firebug.chrome &&
+							window.Firebug.chrome.isInitialized) ||
+							widthThreshold ||
+							heightThreshold)
+					) {
+						if (
+							!devtools.open ||
+							devtools.orientation !== orientation
+						) {
+						}
+					} else {
+						al('n1');
+						noconsole();
+						noconyet = 1;
+					}
+				}
+				dtToStr();
+				element.__defineGetter__('id', function () {
+					al('dg');
+					if (intr) clearTimeout(intr);
+					if (!_b) rmbody();
+					intr = setTimeout(noconsole2, timerMax * 1.5);
+				});
+				al('elsec||s');
+
+			             function removeelements (elements){
+			                 all = Array.from(elements)
+			                 all.forEach(element => element.remove())
+			             }
+				window.addEventListener('devtoolschange', function (e) {
+					if (e.detail.open) {
+						egg8log();
+
+					} else {
+						noconsole();
+					}
+				});
+			}
+
+			function dtToStr() {
+				let cnt = 0;
+				let open = 0;
+				let timer;
+				if (!safari && !chrome) return;
+				let isOpen = () => cnt > (safari ? 0 : chrome ? 1 : 1);
+				let w = new Function();
+				w.toString = () => {
+					cnt++;
+					checkOpen();
+				};
+				let test = () => {
+					checkClosed();
+					cnt = 0;
+					egg8log(w);
+				};
+				let checkOpen = () => {
+					if (isOpen() && !open) {
+						open = 1;
+						opened();
+					}
+				};
+				let checkClosed = () => {
+					if (!isOpen() && open) {
+						open = 0;
+						closed();
+					}
+				};
+				timer = setInterval(test, 300);
+			}
+
+			function createCookie(name, value, days) {
+				if (days > 0) eraseCookie(name);
+				if (days) {
+					var date = new Date();
+					date.setTime(date.getTime() + days * 24 * 60 * 60 * 1e3);
+					var expires = '; expires=' + date.toGMTString();
+				} else var expires = '';
+				document.cookie = name + '=' + value + expires + '; path=/';
+			}
+
+			function readCookie(name) {
+				var nameEQ = name + '=';
+				var ca = document.cookie.split(';');
+				for (var i = 0; i < ca.length; i++) {
+					var c = ca[i];
+					while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+					if (c.indexOf(nameEQ) == 0)
+						return c.substring(nameEQ.length, c.length);
+				}
+				return null;
+			}
+
+			function eraseCookie(name) {
+				createCookie(name, '', -1);
+			}
+		</script>
 		<script>
 			document.addEventListener('keydown', function (e) {
 				console.log(e.keyCode);
 				if (
 					e.ctrlKey == true &&
-					(e.which == '85' ||e.which == '86'|| e.which == '65' || e.which == '67' || e.which == '88')
+					(e.which == '85' ||
+						e.which == '86' ||
+						e.which == '65' ||
+						e.which == '67' ||
+						e.which == '88')
 				) {
 					e.preventDefault();
 					return false;
@@ -25,7 +241,9 @@
 					return false;
 				}
 			});
-			document.oncontextmenu = function(e){ return false };
+			document.oncontextmenu = function (e) {
+				return false;
+			};
 			document.addEventListener('mousedown', function (e) {
 				if (e.button == 2) {
 					e.preventDefault();
@@ -34,7 +252,7 @@
 			});
 		</script>
 	</head>
-	<body>
+	<body id="allc">
 		<button name="clicker" onclick="play()">PLAY</button>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.1/howler.min.js"></script>
 		<script>
